@@ -1,0 +1,28 @@
+---
+
+ - host: host2
+   name: play2
+   sudo: yes
+   tasks:
+      - name: Install Apache
+        apt:  name=apache2 state=latest
+   
+ - host: host1
+   name: play1
+   sudo: yes
+   tasks:
+      - name: Install nginx
+        apt:  name=nginx state=latest
+   
+  
+ 
+ ---
+
+ - host: slave2
+   name: play1
+   sudo: yes
+   tasks:
+      - name: Execute Date command
+        command: date
+      - name: Execute shell script
+        script: hello.sh
